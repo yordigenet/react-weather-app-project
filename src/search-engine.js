@@ -12,17 +12,17 @@ export default function SearchEngine() {
   function handleResponse(response) {
     console.log(response.data);
     setData({
-      teperature: response.data.main.temp,
-      discription: response.data.weather[0].description,
-      humidity: response.data.main.humidity,
+      teperature: response.data.temperature.current,
+      discription: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     });
   }
 
   function handleSearch(event) {
     event.preventDefault();
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=aa09763d916df0424c840d55bfc2d2c9&units=metric`;
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=9e83f4b20abcaf3tc8ob7e37014fe983`;
     axios.get(url).then(handleResponse);
   }
 
