@@ -1,8 +1,50 @@
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-  font-size: calc(10px + 2vmin);
+.App {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.weather-container{
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  padding: 15px;
+  color: #878787;
+  font-family: arial,sans-serif;
+}
+
+.weather-container h1{
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 100;
+  padding-top: 18px;
+}
+.weather-container li{
+  list-style: none;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: left;
+}
+.weather-container ul{
+  padding: 0;
+}
+
+footer{
+  font-size: 14px;
+  margin-top: 8px;
+}
+.weather-container img{
+  height: 70px;
+  width: 70px;
+}
+
+.weather-container .temprature{
+  font-weight: bold;
+  font-size: 50px;
+  margin-left: 10px;
+}
+.weather-container .units{
+  font-size: 14px;
+  position: relative;
+  top: -26px;
+  margin-left: 5px;
+  line-height: 1;
 }

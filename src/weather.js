@@ -1,54 +1,26 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react"
 
-export default function Weather() {
-  let [city, setCity] = useState("");
-  let [data, setData] = useState(null);
-
-  function getCity(event) {
-    setCity(event.target.value);
-  }
-
-  function handleResponse(response) {
-    console.log(response.data);
-    setData({
-      teperature: response.data.main.temp,
-      discription: response.data.weather[0].description,
-      humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    });
-  }
-
-  function handleSearch(event) {
-    event.preventDefault();
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=aa09763d916df0424c840d55bfc2d2c9&units=metric`;
-    axios.get(url).then(handleResponse);
-  }
-
-  let form = (
-    <form onSubmit={handleSearch}>
-      <input type="search" placeholder="Enter a city..." onChange={getCity} />
-      <input type="submit" value="Search" />
-    </form>
-  );
-
-  if (data) {
+export default function Weather(){
     return (
-      <div>
-        {form}
+    <div className="weather">
+        <h1>Addis Ababa</h1>
         <ul>
-          <li>Temperature: {data.teperature}°C</li>
-          <li>Description: {data.discription}</li>
-          <li>Humidity: {data.humidity}%</li>
-          <li>Wind: {data.wind}km/h</li>
-          <li>
-            <img src={data.icon} alt={data.discription} />
-          </li>
+            <li>Wednesday 07:00</li>
+            <li>Mostly Cloudy</li>
         </ul>
-      </div>
-    );
-  } else {
-    return form;
-  }
+        <div className="row">
+            <div className="col-6">
+                <div className="d-flex justify-content-start">     
+                <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="mostly cloudy"></img> 
+                    <div><span className="temprature">6</span><span className="units">°C | °F</span></div>
+            </div>
+            </div>
+         <div className="col-6"><ul>
+            <li>Precipitation</li>
+            <li>Humidity</li>
+            <li>Wind</li></ul>
+            </div>
+            </div>
+       
+    </div>)
 }
