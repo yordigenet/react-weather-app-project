@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import RealLifeDate from "./realLifeDate";
 
 export default function Weather(props){
 const [data, setData] = useState({ready: false});
@@ -12,6 +13,7 @@ function handleResponse(response) {
             discription: response.data.condition.description,
             humidity: response.data.temperature.humidity,
             wind: response.data.wind.speed,
+            date: new Date(response.data.time * 1000),
             name:response.data.city,
             icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
             });
@@ -32,7 +34,7 @@ function handleResponse(response) {
         {form}
         <h1>{data.name}</h1>
         <ul>
-            <li>Wednesday 07:00</li>
+            <li><RealLifeDate date={data.date}/></li>
             <li className="text-capitalize">{data.discription}</li>
         </ul>
         <div className="row">

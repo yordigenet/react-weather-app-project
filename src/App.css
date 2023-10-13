@@ -37,9 +37,10 @@ footer{
 }
 
 .weather-container .temprature{
-  font-weight: bold;
+  font-weight: 400px;
   font-size: 50px;
   margin-left: 10px;
+  color: #212121;
 }
 .weather-container .units{
   font-size: 14px;
