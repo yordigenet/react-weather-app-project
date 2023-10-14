@@ -1,5 +1,6 @@
 import React from "react";
 import RealLifeDate from "./realLifeDate";
+import Weatherunit from "./weatherunit";
 
 export default function SearchEngine(props) {
   return(
@@ -12,7 +13,9 @@ export default function SearchEngine(props) {
       <div className="col-6">
           <div className="d-flex justify-content-start">     
           <img src={props.information.icon} alt={props.information.discription}></img> 
-              <div><span className="temprature">{props.information.teperature}</span><span className="units">°C | °F</span></div>
+              <div>
+                <Weatherunit celcius={props.information.teperature}/>
+                </div>
       </div>
       </div>
    <div className="col-6"><ul>
