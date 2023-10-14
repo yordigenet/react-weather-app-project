@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import RealLifeDate from "./realLifeDate";
+import SearchEngine from "./search-engine"
 
 export default function Weather(props){
 const [data, setData] = useState({ready: false});
@@ -32,24 +33,8 @@ function handleResponse(response) {
     return (
     <div className="weather">
         {form}
-        <h1>{data.name}</h1>
-        <ul>
-            <li><RealLifeDate date={data.date}/></li>
-            <li className="text-capitalize">{data.discription}</li>
-        </ul>
-        <div className="row">
-            <div className="col-6">
-                <div className="d-flex justify-content-start">     
-                <img src={data.icon} alt={data.discription}></img> 
-                    <div><span className="temprature">{data.teperature}</span><span className="units">°C | °F</span></div>
-            </div>
-            </div>
-         <div className="col-6"><ul>
-            <li>Precipitation</li>
-            <li>Humidity: {data.humidity}%</li>
-            <li>Wind: {data.wind}km/h</li></ul>
-            </div>
-            </div>
+        <SearchEngine information={data}/>
+        
        
     </div>);
 }
