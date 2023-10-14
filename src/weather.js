@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import RealLifeDate from "./realLifeDate";
 import SearchEngine from "./search-engine"
 
 export default function Weather(props){
 const [data, setData] = useState({ready: false});
+const [city, setCity] = useState(props.defaultCity)
 
 function handleResponse(response) {
-    console.log(response.data)
         setData({
             ready: true,
             teperature: Math.round(response.data.temperature.current),
@@ -20,10 +19,25 @@ function handleResponse(response) {
             });
         }
 
+function searchValue(){
+  let apiKey = "9e83f4b20abcaf3tc8ob7e37014fe983";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(url).then(handleResponse);
+}
+
+function handleSubmit (event){
+  event.preventDefault();
+  searchValue();
+}
+
+function getCity(event){
+  setCity(event.target.value);
+}
+
   let form = (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col-9"><input className="form-control" type="search" placeholder="Enter a city..." autoFocus="on"/></div>
+        <div className="col-9"><input className="form-control" type="search" placeholder="Enter a city..." autoFocus="on" onChange={getCity}/></div>
       <div className="col-3"><input type="submit" value="Search" className="btn btn-primary w-100"/></div>
       </div> 
     </form>
@@ -39,11 +53,8 @@ function handleResponse(response) {
     </div>);
 }
 else {
-    let url = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=9e83f4b20abcaf3tc8ob7e37014fe983`;
-    axios.get(url).then(handleResponse);
-    return("Loading......");
-        
-    
+   searchValue(); 
+    return("Loading......");   
 }
 }
 
