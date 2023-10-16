@@ -19,8 +19,7 @@ export default function SearchEngine(props) {
       </div>
       </div>
    <div className="col-6"><ul>
-      <li>Precipitation</li>
-        <li>Humidity: {props.information.humidity}%</li>
+      <li>Humidity: {props.information.humidity}%</li>
       <li>Wind: {props.information.wind}km/h</li></ul>
       </div>
       </div>
