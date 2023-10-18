@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchEngine from "./search-engine"
+import WeatherForcast from "./weatherForcast";
 
 export default function Weather(props){
 const [data, setData] = useState({ready: false});
@@ -20,9 +21,11 @@ function handleResponse(response) {
         }
 
 function searchValue(){
+  
   let apiKey = "9e83f4b20abcaf3tc8ob7e37014fe983";
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(url).then(handleResponse);
+    
 }
 
 function handleSubmit (event){
@@ -48,6 +51,7 @@ function getCity(event){
     <div className="weather">
         {form}
         <SearchEngine information={data}/>
+        <WeatherForcast  cordinates={city}/>
         
        
     </div>);
