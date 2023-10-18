@@ -51,7 +51,7 @@ function getCity(event){
     <div className="weather">
         {form}
         <SearchEngine information={data}/>
-        <WeatherForcast  cordinates={city}/>
+        <WeatherForcast  cordinates={data.name}/>
         
        
     </div>);
